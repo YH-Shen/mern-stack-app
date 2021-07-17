@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const JwtStrategy = require("password-jwt").Strategy;
+const JwtStrategy = require("passport-jwt").Strategy;
 
 const User = require("./models/User");
 
@@ -17,7 +17,7 @@ passport.use(new JwtStrategy({
     jwtFromRequest: cookieExtractor,
     secretOrKey: "SYH",
 
-}), (payload, done) =>{
+}, (payload, done) =>{
     // payload = data. done function
     User.findById({_id: payload.sub}, (err, user) => {
         if (err){
@@ -30,7 +30,7 @@ passport.use(new JwtStrategy({
             return done(null, false);
         }
     });
-})
+}))
 
 
 // authenticated local strategy using username and password

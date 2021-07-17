@@ -13,21 +13,24 @@ mongoose.connect("mongodb://localhost:27017/mernauth", {useNewUrlParser: true, u
     console.log("Successfully connected to database!");
 });
 
-const User = require("./models/User");
+// const User = require("./models/User");
 
-const userInput = {
-    username: "testUser",
-    password: "1234567",
-    role: "admin"
-}
+// const userInput = {
+//     username: "testUser",
+//     password: "1234567",
+//     role: "admin"
+// }
 
-const user = new User(userInput);
-user.save((err, document) => {
-    if (err){
-        console.log(err);
-    }
-    console.log(document);
-})
+// const user = new User(userInput);
+// user.save((err, document) => {
+//     if (err){
+//         console.log(err);
+//     }
+//     console.log(document);
+// })
+
+const userRouter = require("./routes/User");
+app.use("/user", userRouter);
 
 // listen port 5000 and avoid react app's 3000 port
 app.listen(5000, ()=>{
