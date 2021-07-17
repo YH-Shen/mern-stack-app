@@ -13,6 +13,22 @@ mongoose.connect("mongodb://localhost:27017/mernauth", {useNewUrlParser: true, u
     console.log("Successfully connected to database!");
 });
 
+const User = require("./models/User");
+
+const userInput = {
+    username: "testUser",
+    password: "1234567",
+    role: "admin"
+}
+
+const user = new User(userInput);
+user.save((err, document) => {
+    if (err){
+        console.log(err);
+    }
+    console.log(document);
+})
+
 // listen port 5000 and avoid react app's 3000 port
 app.listen(5000, ()=>{
     console.log("express server started")

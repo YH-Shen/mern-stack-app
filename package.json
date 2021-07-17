@@ -20,6 +20,7 @@
 	},
 	"homepage": "https://github.com/Yuhui-Shen/mern-stack-app#readme",
 	"dependencies": {
+		"bcrypt": "^5.0.1",
 		"cookie-parser": "^1.4.5",
 		"express": "^4.17.1",
 		"mongoose": "^5.13.3"
