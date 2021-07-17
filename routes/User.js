@@ -52,4 +52,10 @@ userRouter.post("/login", passport.authenticate("local", {session: false}), (req
     }
 });
 
+userRouter.get("/logout", passport.authenticate("jwt", {session: false}), (req, res)=>{
+    // remove the JWT token so that they have to signin again to access their todos/admin panel
+    res.clearCookie("access_token");
+    res.json({user: {username: "", role: ""}, success: true});
+});
+
 module.exports = userRouter;
