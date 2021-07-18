@@ -37,13 +37,9 @@ const isAuthenticated = () => {
                     // if response status is not 401, then it's my own status
                     // passport automatically sends 401 status if not authenticated
                     if (res.status !== 401) {
-                        console.log("not 401");
                         console.log(res);
-                        return res.json().then(data => {
-                            console.log(data);
-                            return data});
+                        return res.json().then(data => data);
                     } else {
-                        console.log("401");
                         return { isAuthenticated: false, user: {username: "", role: ""}};
                     }
                 })
