@@ -1,5 +1,5 @@
 const login = (user) => {
-        return (fetch("/user/login", {
+        return (fetch("http://localhost:5000/user/login", {
             method: "post",
             body: JSON.stringify(user),
             headers: {
@@ -15,7 +15,7 @@ const login = (user) => {
     };
 
 const register = (user) => {
-        return fetch("/user/register", {
+        return fetch("http://localhost:5000/user/register", {
             method: "post",
             body: JSON.stringify(user),
             headers: {
@@ -26,7 +26,7 @@ const register = (user) => {
     };
 
 const logout = () => {
-        return fetch("/user/logout")
+        return fetch("http://localhost:5000/user/logout")
                 .then(res => res.json())
                 .then(data => data);
     };
