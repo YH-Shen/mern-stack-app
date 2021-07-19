@@ -1,13 +1,20 @@
 const express = require("express");
-const app = express();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-
+const dotenv = require("dotenv");
 const cors = require("cors");
 
-app.use(cookieParser());
-// body pareser in express
-app.use(express.json());
+const app = express();
+
+
+
+//middleware
+app.use(express.json({ extended: false }));
+//port
+dotenv.config()
+
+const PORT = process.env.PORT || 5000;
+
 
 
 // connect mongodb locally
@@ -16,16 +23,14 @@ mongoose.connect("mongodb://localhost:27017/mernauth", {useNewUrlParser: true, u
     console.log("Successfully connected to database!");
 });
 
-// -----------Tests
 
-//middleware
-app.use(express.json({ extended: false }));
-//port
-const PORT = process.env.PORT || 5000;
+// cors()
 app.use(cors());
 
-// -----------
 
+app.use(cookieParser());
+// body pareser in express
+app.use(express.json());
 
 const userRouter = require("./routes/User");
 app.use("/user", userRouter);

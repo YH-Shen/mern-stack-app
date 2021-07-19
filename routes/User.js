@@ -6,6 +6,7 @@ const JWT = require("jsonwebtoken");
 const User = require("../models/User");
 const Todo = require("../models/Todo");
 
+
 const signToken = (userID) => {
     //  JWT.sign return the actual JWT token
     return JWT.sign({
@@ -32,7 +33,6 @@ userRouter.post("/register", (req, res)=>{
                     res.status(500).json({message: {msgBody: "Error has occured", msgError: true}})
                 } else{
                     res.status(201).json({message: {msgBody: "Account successfully created", msgError: false}})
-
                 }
             })
         }
@@ -84,7 +84,7 @@ userRouter.get("/todos", passport.authenticate("jwt", {session: false}), (req, r
         } else {
             res.status(200).json({todos: document.todos, authenticated: true});
         }
-    })
+    });
 });
 
 userRouter.get("/admin", passport.authenticate("jwt", {session: false}), (req, res)=>{
