@@ -3,7 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
-
+// set up express js server
 const app = express();
 
 app.use(cors());
