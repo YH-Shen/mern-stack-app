@@ -46,12 +46,18 @@ const Todos = props =>{
         setTodo({name : ""});
     }
 
+    const toggleTodo = (name) => {
+        const newTodoList = [...todos];
+        console.log(newTodoList);
+    }
+
     return(
         <div>
+            <h1>Todo List</h1>
             <ul className="list-group">
                 {
                     todos.map(todo =>{
-                        return <TodoItem key={todo._id} todo={todo}/>
+                        return <TodoItem key={todo._id} todo={todo} toggleTodo={toggleTodo}/>
                     })
                 }
             </ul>
